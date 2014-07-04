@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="MyShowsStyle" parent="@style/_MyShowsStyle"/>
+
+  <style name="_MyShowsStyle" parent="Theme.Base.AppCompat.Light">
+
+    <item name="android:editTextBackground">@drawable/myshowsstyle_edit_text_holo_light</item>
+
+    <item name="android:textColorHighlight">#99cc0000</item>
+    <item name="android:textSelectHandleLeft">@drawable/myshowsstyle_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/myshowsstyle_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/myshowsstyle_text_select_handle_middle</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/myshowsstyle_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/myshowsstyle_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/ButtonMyShowsStyle</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonMyShowsStyle</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerMyShowsStyle</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarMyShowsStyle</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarMyShowsStyle</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigMyShowsStyle</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallMyShowsStyle</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleMyShowsStyle</item>
+
+    <item name="android:listChoiceBackgroundIndicator">@drawable/myshowsstyle_list_selector_holo_light</item>
+
+    <item name="android:activatedBackgroundIndicator">@drawable/myshowsstyle_activated_background_holo_light</item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/myshowsstyle_fastscroll_thumb_holo</item>
+
+  </style>
+
+</resources>

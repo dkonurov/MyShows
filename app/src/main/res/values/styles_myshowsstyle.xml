@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="ButtonMyShowsStyle" parent="android:Widget.Holo.Light.Button">
+	  <item name="android:background">@drawable/myshowsstyle_btn_default_holo_light</item>
+  </style>
+
+  <style name="ImageButtonMyShowsStyle" parent="android:Widget.Holo.Light.ImageButton">
+	  <item name="android:background">@drawable/myshowsstyle_btn_default_holo_light</item>
+  </style>
+
+  <style name="SpinnerMyShowsStyle" parent="android:Widget.Holo.Light.Spinner">
+      <item name="android:background">@drawable/myshowsstyle_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/myshowsstyle_list_selector_holo_light</item>
+  </style>
+
+  <style name="ProgressBarMyShowsStyle" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/myshowsstyle_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/myshowsstyle_progress_indeterminate_horizontal_holo_light</item>
+  </style>
+
+  <style name="RatingBarMyShowsStyle" parent="android:Widget.Holo.Light.RatingBar">
+      <item name="android:progressDrawable">@drawable/myshowsstyle_ratingbar_full_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/myshowsstyle_ratingbar_full_holo_light</item>
+  </style>
+
+  <style name="RatingBarBigMyShowsStyle" parent="android:Widget.Holo.Light.RatingBar.Indicator">
+      <item name="android:progressDrawable">@drawable/myshowsstyle_ratingbar_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/myshowsstyle_ratingbar_holo_light</item>
+  </style>
+
+  <style name="RatingBarSmallMyShowsStyle" parent="android:Widget.Holo.Light.RatingBar.Small">
+      <item name="android:progressDrawable">@drawable/myshowsstyle_ratingbar_small_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/myshowsstyle_ratingbar_small_holo_light</item>
+  </style>
+
+  <style name="ToggleMyShowsStyle" parent="android:Widget.Holo.Light.Button.Toggle">
+      <item name="android:background">@drawable/myshowsstyle_btn_toggle_holo_light</item>
+  </style>
+
+</resources>

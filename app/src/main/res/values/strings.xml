@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">myShowsSerial</string>
+    <string name="my_ser">Мои сериалы</string>
+    <string name="catalog_ser">Каталог сериалов</string>
+    <string name="rating_ser">Рейтинг сериалов</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="my_main">My</string>
+    <string name="shows_main">Shows</string>
+    <string name="sign_up">Войти</string>
+    <string name="main_activity_label">My Shows</string>
+
+</resources>
