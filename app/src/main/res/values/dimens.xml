@@ -10,4 +10,6 @@
     <dimen name="top_margin_login_inside">20dp</dimen>
     <dimen name="top_margin_login">100dp</dimen>
     <dimen name="width_sing_up">200dp</dimen>
+    <dimen name="height_main_logo_login_activity">150dp</dimen>
+    <dimen name="text_size_login_activity">40sp</dimen>
 </resources>
