@@ -2,9 +2,10 @@
 <resources>
 
     <string name="app_name">myShowsSer</string>
+    <string name="my_profile">Мой профиль</string>
     <string name="my_ser">Мои сериалы</string>
-    <string name="catalog_ser">Каталог сериалов</string>
     <string name="rating_ser">Рейтинг сериалов</string>
+    <string name="catalog_ser">Каталог сериалов</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

@@ -1,5 +1,6 @@
 package com.myShows.dmitry.myshowsserial.activity;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -30,11 +31,14 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    private AccountManager mAccountManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAccountManager = AccountManager.get(this);
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -64,13 +68,16 @@ public class MainActivity extends ActionBarActivity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.my_ser);
+                mTitle = getString(R.string.my_profile);
                 break;
             case 2:
-                mTitle = getString(R.string.catalog_ser);
+                mTitle = getString(R.string.my_ser);
                 break;
             case 3:
                 mTitle = getString(R.string.rating_ser);
+                break;
+            case 4:
+                mTitle = getString(R.string.catalog_ser);
                 break;
         }
     }
@@ -143,6 +150,11 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+    }
+
+
+    public AccountManager getAccountManager() {
+        return mAccountManager;
     }
 
 }
