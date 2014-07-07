@@ -1,4 +1,4 @@
-package com.myShows.dmitry.myshowsserial.AsyncTask;
+package com.myShows.dmitry.myshowsserial.asyncTask;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -10,21 +10,18 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
 
-public abstract class GetResponse extends AsyncTask<String, HttpResponse, HttpResponse> {
+public abstract class GetRequest extends AsyncTask<String, HttpResponse, HttpResponse> {
 
     public static final int URL_POSITION = 0;
-    private static final int LOGIN_POSITION = 1;
-    private static final int PASSWORD_POSITION = 2;
+    public static final HttpClient sHttpClient = new DefaultHttpClient();
 
     @Override
     protected HttpResponse doInBackground(String... params) {
-        HttpClient httpClient = new DefaultHttpClient();
-        String url = String.format(params[URL_POSITION],
-                params[LOGIN_POSITION], params[PASSWORD_POSITION]);
-        HttpGet httpGet = new HttpGet(url);
-        HttpResponse response = null;
+        HttpGet httpGet = new HttpGet(params[URL_POSITION]);
+        HttpResponse response;
         try {
-            response = httpClient.execute(httpGet);
+            response = sHttpClient.execute(httpGet);
+            Log.d("check", response.getStatusLine().getStatusCode() + "");
             return response;
 
         } catch (IOException e) {

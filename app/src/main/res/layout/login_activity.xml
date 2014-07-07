@@ -36,13 +36,17 @@
             android:layout_marginLeft="@dimen/left_right_margin_login"
             android:layout_marginRight="@dimen/left_right_margin_login"
             android:layout_width="match_parent"
+            android:inputType="textPersonName"
+            android:singleLine="true"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/login_activity_password"
             android:layout_marginTop="@dimen/top_margin_login_inside"
+            android:singleLine="true"
             android:layout_marginRight="@dimen/left_right_margin_login"
             android:layout_marginLeft="@dimen/left_right_margin_login"
             android:layout_width="match_parent"
+            android:inputType="textPassword"
             android:layout_height="wrap_content" />
         </LinearLayout>
 
