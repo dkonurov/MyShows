@@ -1,25 +1,22 @@
 package com.myShows.dmitry.myshowsserial.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.myShows.dmitry.myshowsserial.ApiManager;
+import com.myShows.dmitry.myshowsserial.apiUtils.ApiManager;
 import com.myShows.dmitry.myshowsserial.R;
 import com.myShows.dmitry.myshowsserial.activity.MainActivity;
-import com.myShows.dmitry.myshowsserial.asyncTask.GsonParserToUser;
+import com.myShows.dmitry.myshowsserial.asyncTask.parser.GsonParserToUser;
 import com.myShows.dmitry.myshowsserial.listener.ResultJsonListener;
 import com.myShows.dmitry.myshowsserial.model.User;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class ProfileFragment extends Fragment {
 

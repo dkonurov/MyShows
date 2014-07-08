@@ -1,4 +1,4 @@
-package com.myShows.dmitry.myshowsserial.asyncTask;
+package com.myShows.dmitry.myshowsserial.asyncTask.parser;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.myShows.dmitry.myshowsserial.model.User;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-abstract public class GsonParserToUser extends AsyncTask<String, Gson, User> {
+abstract public class GsonParserToUser extends AsyncTask<String, Void, User> {
 
     private Bitmap mBitmap;
 

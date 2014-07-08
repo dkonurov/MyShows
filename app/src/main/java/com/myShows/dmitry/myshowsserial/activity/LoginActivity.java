@@ -7,13 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.CookieSyncManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.myShows.dmitry.myshowsserial.ApiManager;
+import com.myShows.dmitry.myshowsserial.apiUtils.ApiManager;
 import com.myShows.dmitry.myshowsserial.R;
-import com.myShows.dmitry.myshowsserial.Utils;
-import com.myShows.dmitry.myshowsserial.listener.ResultListener;
+import com.myShows.dmitry.myshowsserial.apiUtils.Utils;
+import com.myShows.dmitry.myshowsserial.listener.ResultLoginListener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -32,6 +33,7 @@ public class LoginActivity extends AccountAuthenticatorActivity {
         setContentView(R.layout.login_activity);
         ApiManager.getInstance().setContext(getApplicationContext());
         mAccountManager = AccountManager.get(this);
+        CookieSyncManager.createInstance(this);
         Account[] accounts = mAccountManager.getAccountsByType(ApiManager.ACCOUNT_TYPE);
         if (accounts != null && accounts.length != 0) {
             startMainActivity();
@@ -48,7 +50,7 @@ public class LoginActivity extends AccountAuthenticatorActivity {
                     encode(mPasswordEditText.getText().toString(), Utils.UTF_8));
             if (loginText != null && passwordText != null
                     && loginText.length() != 0 && passwordText.length() != 0) {
-                ApiManager.getInstance().loginStart(loginText, passwordText, new ResultListener() {
+                ApiManager.getInstance().loginStart(loginText, passwordText, new ResultLoginListener() {
                     @Override
                     public void onResult() {
                         Account account = new Account(loginText,
@@ -61,6 +63,9 @@ public class LoginActivity extends AccountAuthenticatorActivity {
                             startMainActivity();
                         }
                     }
+
+                    @Override
+                    public void onErrorLoginResult() {}
                 });
             } else {
                 Toast.makeText(getApplicationContext(),

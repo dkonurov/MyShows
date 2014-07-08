@@ -1,4 +1,4 @@
-package com.myShows.dmitry.myshowsserial;
+package com.myShows.dmitry.myshowsserial.apiUtils;
 
 import android.util.Log;
 

@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieSyncManager;
 
 import com.myShows.dmitry.myshowsserial.NavigationDrawerFragment;
 import com.myShows.dmitry.myshowsserial.R;
 import com.myShows.dmitry.myshowsserial.fragments.ProfileFragment;
+import com.myShows.dmitry.myshowsserial.fragments.ShowSerialFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -64,6 +66,11 @@ public class MainActivity extends ActionBarActivity
                         .replace(R.id.container, ProfileFragment.newInstance(position + 1))
                         .commit();
                 break;
+            case 1:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ShowSerialFragment.newInstance(position + 1))
+                        .commit();
+                break;
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -109,6 +116,17 @@ public class MainActivity extends ActionBarActivity
         actionBar.setTitle(mTitle);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CookieSyncManager.getInstance().startSync();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        CookieSyncManager.getInstance().stopSync();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,6 +169,7 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             return inflater.inflate(R.layout.fragment_main, container, false);
+
         }
 
         @Override

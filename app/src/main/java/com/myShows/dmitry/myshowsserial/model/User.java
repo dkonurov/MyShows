@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class User {
 
     @SerializedName("login")
@@ -21,12 +19,14 @@ public class User {
     private String mGender;
 
     @SerializedName("friends")
-    private List<User> mFriends;
+    private User[] mFriends;
 
     @SerializedName("stats")
     private Static mStatic;
 
     private Bitmap mImage;
+
+    private Show[] mShow;
 
     public Static getStatic() {
         return mStatic;
@@ -76,11 +76,20 @@ public class User {
         this.mGender = mGender;
     }
 
-    public List<User> getFriends() {
+    public User[] getFriends() {
         return mFriends;
     }
 
-    public void setFriends(List<User> mFriends) {
+
+    public void setFriends(User[] mFriends) {
         this.mFriends = mFriends;
+    }
+
+    public Show[] getSerial() {
+        return mShow;
+    }
+
+    public void setSerial(Show[] mShow) {
+        this.mShow = mShow;
     }
 }

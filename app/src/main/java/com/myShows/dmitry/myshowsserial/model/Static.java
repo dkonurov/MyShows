@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName;
 public class Static {
 
     @SerializedName("watchedHours")
-    private int mWatchedHours;
+    private float mWatchedHours;
 
     @SerializedName("remainingHours")
-    private int mRemainingHours;
+    private float mRemainingHours;
 
     @SerializedName("watchedEpisodes")
     private int mWatchedEpisodes;
@@ -21,30 +21,30 @@ public class Static {
     private int mTotalEpisodes;
 
     @SerializedName("totalDays")
-    private int mTotalDays;
+    private float mTotalDays;
 
     @SerializedName("totalHours")
-    private int mTotalHours;
+    private float mTotalHours;
 
     @SerializedName("remainingDays")
-    private int mRemainingDays;
+    private float mRemainingDays;
 
     @SerializedName("watchedDays")
-    private int mWatchedDays;
+    private float mWatchedDays;
 
-    public int getWatchedHours() {
+    public float getWatchedHours() {
         return mWatchedHours;
     }
 
-    public void setWatchedHours(int mWatchedHours) {
+    public void setWatchedHours(float mWatchedHours) {
         this.mWatchedHours = mWatchedHours;
     }
 
-    public int getmRemainingHours() {
+    public float getRemainingHours() {
         return mRemainingHours;
     }
 
-    public void setRemainingHours(int mRemainingHours) {
+    public void setRemainingHours(float mRemainingHours) {
         this.mRemainingHours = mRemainingHours;
     }
 
@@ -72,35 +72,35 @@ public class Static {
         this.mTotalEpisodes = mTotalEpisodes;
     }
 
-    public int getTotalDays() {
+    public float getTotalDays() {
         return mTotalDays;
     }
 
-    public void setTotalDays(int mTotalDays) {
+    public void setTotalDays(float mTotalDays) {
         this.mTotalDays = mTotalDays;
     }
 
-    public int getTotalHours() {
+    public float getTotalHours() {
         return mTotalHours;
     }
 
-    public void setTotalHours(int mTotalHours) {
+    public void setTotalHours(float mTotalHours) {
         this.mTotalHours = mTotalHours;
     }
 
-    public int getRemainingDays() {
+    public float getRemainingDays() {
         return mRemainingDays;
     }
 
-    public void setRemainingDays(int mRemainingDays) {
+    public void setRemainingDays(float mRemainingDays) {
         this.mRemainingDays = mRemainingDays;
     }
 
-    public int getWatchedDays() {
+    public float getWatchedDays() {
         return mWatchedDays;
     }
 
-    public void setWatchedDays(int mWatchedDays) {
+    public void setWatchedDays(float mWatchedDays) {
         this.mWatchedDays = mWatchedDays;
     }
 }

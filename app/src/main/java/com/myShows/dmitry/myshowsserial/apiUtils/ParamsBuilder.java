@@ -1,4 +1,4 @@
-package com.myShows.dmitry.myshowsserial;
+package com.myShows.dmitry.myshowsserial.apiUtils;
 
 import android.util.Log;
 
@@ -6,6 +6,7 @@ public class ParamsBuilder {
     private static final String DEFAULT_API_STRING = "http://api.myshows.ru/";
     public static final String LOGIN_METHOD="profile/login";
     public static final String PROFILE_METHOD = "profile/";
+    public static final String SHOWS_METHOD = "profile/shows/";
     private String mGetUrl;
 
     private boolean mIsFirstParams = true;
