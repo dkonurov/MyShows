@@ -1,3 +1,14 @@
+/.idea/.name
+/.idea/compiler.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/encodings.xml
+/.idea/gradle.xml
+/.idea/libraries/commons_io_2_4.xml
+/.idea/libraries/universal_image_loader_1_9_2.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/scopes/scope_settings.xml
+/.idea/vcs.xml
 .gradle
 /local.properties
 /.idea/workspace.xml

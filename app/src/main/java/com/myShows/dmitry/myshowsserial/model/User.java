@@ -12,7 +12,7 @@ public class User {
     private String mLogin;
 
     @SerializedName("avatar")
-    private String mAvatar;
+    private String mAvatarUrl;
 
     @SerializedName("wastedTime")
     private int mWastedTime;
@@ -23,7 +23,18 @@ public class User {
     @SerializedName("friends")
     private List<User> mFriends;
 
+    @SerializedName("stats")
+    private Static mStatic;
+
     private Bitmap mImage;
+
+    public Static getStatic() {
+        return mStatic;
+    }
+
+    public void setStatic(Static mStatic) {
+        this.mStatic = mStatic;
+    }
 
     public Bitmap getImage() {
         return mImage;
@@ -41,12 +52,12 @@ public class User {
         this.mLogin = mLogin;
     }
 
-    public String getAvatar() {
-        return mAvatar;
+    public String getAvatarUrl() {
+        return mAvatarUrl;
     }
 
-    public void setAvatar(String mAvatar) {
-        this.mAvatar = mAvatar;
+    public void setAvatarUrl(String mAvatar) {
+        this.mAvatarUrl = mAvatar;
     }
 
     public int getWastedTime() {

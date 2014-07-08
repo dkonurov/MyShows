@@ -34,7 +34,6 @@ public class LoginActivity extends AccountAuthenticatorActivity {
         mAccountManager = AccountManager.get(this);
         Account[] accounts = mAccountManager.getAccountsByType(ApiManager.ACCOUNT_TYPE);
         if (accounts != null && accounts.length != 0) {
-            ApiManager.getInstance().loginStart(accounts[0].name, mAccountManager.getPassword(accounts[0]), null);
             startMainActivity();
         }
         mLoginEditText = (EditText) findViewById(R.id.login_activity_login);

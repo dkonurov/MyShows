@@ -1,8 +1,10 @@
 package com.myShows.dmitry.myshowsserial.listener;
 
-import org.json.JSONArray;
 
-public interface ResultJsonListener{
+/**
+ * this class use in AsyncTask for correct return String json
+ */
+public interface ResultJsonListener {
 
     public void onJSONListener(String json);
 }
