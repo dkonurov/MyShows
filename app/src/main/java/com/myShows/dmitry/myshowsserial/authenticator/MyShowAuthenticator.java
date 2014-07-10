@@ -7,9 +7,9 @@ import android.accounts.NetworkErrorException;
 import android.content.Context;
 import android.os.Bundle;
 
-public class myShowAuthenticator extends AbstractAccountAuthenticator {
+public class MyShowAuthenticator extends AbstractAccountAuthenticator {
 
-    public myShowAuthenticator(Context context) {
+    public MyShowAuthenticator(Context context) {
         super(context);
     }
 

@@ -1,6 +1,7 @@
 package com.myShows.dmitry.myshowsserial.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.myShows.dmitry.myshowsserial.R;
+import com.myShows.dmitry.myshowsserial.activity.ShowCurrentActivity;
 import com.myShows.dmitry.myshowsserial.model.Show;
 
 import java.util.List;
@@ -28,12 +30,22 @@ public class ShowAdapter extends ArrayAdapter<Show> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = mInflater.inflate(mResource, parent, false);
         }
         TextView textView = (TextView) convertView.findViewById(R.id.label_show_list);
         textView.setText(generateTitle(position));
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowCurrentActivity.class);
+                Log.d("fail", mShows.get(position).getShowId() + "");
+                intent.putExtra(ShowCurrentActivity.ID, mShows.get(position).getShowId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
         return convertView;
     }
 

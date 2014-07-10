@@ -29,6 +29,9 @@
             android:label="@string/main_activity_label">
         </activity>
 
+        <activity android:name=".activity.ShowCurrentActivity"
+            android:label="@string/shows_watch"/>
+
         <service
             android:name=".authenticator.AuthenticatorService">
             <intent-filter>

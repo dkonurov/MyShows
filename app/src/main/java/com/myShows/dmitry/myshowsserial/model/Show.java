@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Show {
 
     @SerializedName("showId")
@@ -37,6 +39,16 @@ public class Show {
     private String mImageUrl;
 
     private Bitmap mImage;
+
+    private List<Episode> mEpisodeList;
+
+    public List<Episode> getSeriesList() {
+        return mEpisodeList;
+    }
+
+    public void setSeriesList(List<Episode> mEpisodeList) {
+        this.mEpisodeList = mEpisodeList;
+    }
 
     public int getShowId() {
         return mShowId;

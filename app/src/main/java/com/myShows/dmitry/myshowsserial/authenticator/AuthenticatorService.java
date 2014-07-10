@@ -6,11 +6,11 @@ import android.os.IBinder;
 
 public class AuthenticatorService extends Service {
     // Instance field that stores the authenticator object
-    private myShowAuthenticator mAuthenticator;
+    private MyShowAuthenticator mAuthenticator;
     @Override
     public void onCreate() {
         // Create a new authenticator object
-        mAuthenticator = new myShowAuthenticator(this);
+        mAuthenticator = new MyShowAuthenticator(this);
     }
     /*
      * When the system binds to this Service to make the RPC call

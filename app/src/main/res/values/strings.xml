@@ -18,5 +18,6 @@
     <string name="please_write_login_pass">Имя пользователя и пароль не должны быть пустыми</string>
     <string name="ACCOUNT_LABEL">Account Label</string>
     <string name="account_type">com.myShowsSer</string>
+    <string name="shows_watch">ShowsWatch</string>
 
 </resources>

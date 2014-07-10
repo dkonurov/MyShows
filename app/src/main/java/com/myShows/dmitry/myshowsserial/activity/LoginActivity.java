@@ -15,6 +15,7 @@ import com.myShows.dmitry.myshowsserial.apiUtils.ApiManager;
 import com.myShows.dmitry.myshowsserial.R;
 import com.myShows.dmitry.myshowsserial.apiUtils.Utils;
 import com.myShows.dmitry.myshowsserial.listener.ResultLoginListener;
+import com.myShows.dmitry.myshowsserial.listener.ResultNothingListener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -25,7 +26,6 @@ public class LoginActivity extends AccountAuthenticatorActivity {
     private EditText mPasswordEditText;
     private EditText mLoginEditText;
     private AccountManager mAccountManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class LoginActivity extends AccountAuthenticatorActivity {
         mPasswordEditText = (EditText) findViewById(R.id.login_activity_password);
     }
 
-
     public void onClickSignIn(View view) {
         try {
             final String loginText = URLEncoder.encode(mLoginEditText.getText().toString(), Utils.UTF_8);
@@ -50,9 +49,9 @@ public class LoginActivity extends AccountAuthenticatorActivity {
                     encode(mPasswordEditText.getText().toString(), Utils.UTF_8));
             if (loginText != null && passwordText != null
                     && loginText.length() != 0 && passwordText.length() != 0) {
-                ApiManager.getInstance().loginStart(loginText, passwordText, new ResultLoginListener() {
+                ApiManager.getInstance().loginStart(loginText, passwordText, new ResultNothingListener() {
                     @Override
-                    public void onResult() {
+                    public void onNothingResult() {
                         Account account = new Account(loginText,
                                 ApiManager.ACCOUNT_TYPE);
                         Bundle bundle = new Bundle();
@@ -65,7 +64,11 @@ public class LoginActivity extends AccountAuthenticatorActivity {
                     }
 
                     @Override
-                    public void onErrorLoginResult() {}
+                    public void onErrorAuthorization() {
+                        Toast.makeText(getApplicationContext(),
+                                getString(R.string.error_login_or_password),
+                                Toast.LENGTH_SHORT).show();
+                    }
                 });
             } else {
                 Toast.makeText(getApplicationContext(),
