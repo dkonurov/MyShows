@@ -40,14 +40,14 @@ public class Show {
 
     private Bitmap mImage;
 
-    private List<Episode> mEpisodeList;
+    private List<WatchEpisode> mWatchEpisodeList;
 
-    public List<Episode> getSeriesList() {
-        return mEpisodeList;
+    public List<WatchEpisode> getSeriesList() {
+        return mWatchEpisodeList;
     }
 
-    public void setSeriesList(List<Episode> mEpisodeList) {
-        this.mEpisodeList = mEpisodeList;
+    public void setSeriesList(List<WatchEpisode> mWatchEpisodeList) {
+        this.mWatchEpisodeList = mWatchEpisodeList;
     }
 
     public int getShowId() {

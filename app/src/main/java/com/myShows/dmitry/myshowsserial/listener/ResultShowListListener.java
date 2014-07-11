@@ -10,5 +10,8 @@ abstract public class ResultShowListListener implements ResultObjectListener {
         onResultShowList((List<Show>) object);
     }
 
+    @Override
+    public void onErrorAuthorization() {}
+
     abstract public void onResultShowList(List<Show> showList);
 }

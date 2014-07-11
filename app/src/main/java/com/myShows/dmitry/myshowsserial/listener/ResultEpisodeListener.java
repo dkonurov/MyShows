@@ -11,5 +11,8 @@ abstract public class ResultEpisodeListener implements ResultObjectListener {
         onResultEpisodeList((List<Episode>) object);
     }
 
+    @Override
+    public void onErrorAuthorization() {}
+
     abstract public void onResultEpisodeList(List<Episode> episodeList);
 }

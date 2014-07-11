@@ -46,10 +46,6 @@ public class ProfileFragment extends Fragment {
                     ImageLoader.getInstance().displayImage(mUser.getAvatarUrl(), avatar);
                 }
             }
-
-            @Override
-            public void onErrorAuthorization() {
-            }
         });
         return rootView;
     }

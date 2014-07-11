@@ -65,6 +65,7 @@ public abstract class GetAsyncTask extends AsyncTask<ParamsBuilder, Void, Object
             ResultAsyncTask resultAsyncTask = new ResultAsyncTask();
             resultAsyncTask.setJson(json);
             resultAsyncTask.setStatusCode(response.getStatusLine().getStatusCode());
+            Log.d("json", resultAsyncTask.getJson());
             switch (resultAsyncTask.getStatusCode()) {
                 case ApiManager.NEED_AUTHORIZATION:
                     onNeedResult(params[0], mResultObjectListener);

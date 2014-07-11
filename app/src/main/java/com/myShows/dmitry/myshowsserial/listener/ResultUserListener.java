@@ -9,5 +9,8 @@ public abstract class ResultUserListener implements ResultObjectListener {
         onResultUser((User) object);
     }
 
+    @Override
+    public void onErrorAuthorization() {}
+
     abstract public void onResultUser(User user);
 }

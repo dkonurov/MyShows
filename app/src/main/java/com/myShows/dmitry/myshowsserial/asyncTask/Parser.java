@@ -1,14 +1,12 @@
 package com.myShows.dmitry.myshowsserial.asyncTask;
 
-import android.graphics.Bitmap;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myShows.dmitry.myshowsserial.enums.EnumMethod;
 import com.myShows.dmitry.myshowsserial.model.Episode;
 import com.myShows.dmitry.myshowsserial.model.Show;
 import com.myShows.dmitry.myshowsserial.model.User;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.myShows.dmitry.myshowsserial.model.WatchEpisode;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -31,7 +29,6 @@ public class Parser {
     private User parseUser(String json) {
         Gson gson = new Gson();
         User user = gson.fromJson(json, User.class);
-        Bitmap bitmap = ImageLoader.getInstance().loadImageSync(user.getAvatarUrl());
         return user;
     }
 
@@ -48,7 +45,20 @@ public class Parser {
         return tList;
     }
 
-    private List<Episode> parseMassiveSeries(String json) {
+    private List<WatchEpisode> parseMassiveWatchEpisode(String json) {
+        Gson gson = new Gson();
+        List<WatchEpisode> tList = new ArrayList<WatchEpisode>();
+        Type mapType = new TypeToken<Map<String, WatchEpisode>>() {
+        }.getType();
+        Map<String, WatchEpisode> map = gson.fromJson(json, mapType);
+        Set<Map.Entry<String, WatchEpisode>> serialEntry = map.entrySet();
+        for (Map.Entry<String, WatchEpisode> entry : serialEntry) {
+            tList.add(entry.getValue());
+        }
+        return tList;
+    }
+
+    private List<Episode> parseMassiveEpisode(String json) {
         Gson gson = new Gson();
         List<Episode> tList = new ArrayList<Episode>();
         Type mapType = new TypeToken<Map<String, Episode>>() {
@@ -70,7 +80,10 @@ public class Parser {
             case SHOW:
                 return parseMassiveShow(json);
             case CURRENT_SHOW:
-                return parseMassiveSeries(json);
+                return parseMassiveWatchEpisode(json);
+            case EPISODE_UNWATCHED:
+            case EPISODE_NEXT:
+                return parseMassiveEpisode(json);
             default:
                 return null;
         }

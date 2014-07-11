@@ -29,8 +29,8 @@
             android:label="@string/main_activity_label">
         </activity>
 
-        <activity android:name=".activity.ShowCurrentActivity"
-            android:label="@string/shows_watch"/>
+        <activity android:name=".activity.ShowCurrentActivity"/>
+        <activity android:name=".activity.CheckEpisodeActivity"/>
 
         <service
             android:name=".authenticator.AuthenticatorService">

@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieSyncManager;
 
-import com.myShows.dmitry.myshowsserial.NavigationDrawerFragment;
+import com.myShows.dmitry.myshowsserial.navigationDrawer.NavigationDrawerFragment;
 import com.myShows.dmitry.myshowsserial.R;
 import com.myShows.dmitry.myshowsserial.fragments.ProfileFragment;
 import com.myShows.dmitry.myshowsserial.fragments.ShowSerialFragment;
@@ -27,6 +26,7 @@ public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     public static final String ARG_SECTION_NUMBER = "section_number";
+    public static final String NAME_TITLE = "name title";
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         mNavigationDrawerFragment.closeDrawers();
+        onNavigationDrawerItemSelected(getIntent().getIntExtra(ARG_SECTION_NUMBER, 0));
     }
 
     @Override
@@ -77,7 +78,6 @@ public class MainActivity extends ActionBarActivity
                         .commit();
                 break;
         }
-
     }
 
     @Override
@@ -103,6 +103,12 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
+    public void onSectionAttached(String name) {
+        mTitle = name;
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(mTitle);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -114,18 +120,6 @@ public class MainActivity extends ActionBarActivity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        CookieSyncManager.getInstance().startSync();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        CookieSyncManager.getInstance().stopSync();
     }
 
     @Override
@@ -175,8 +169,12 @@ public class MainActivity extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            int intArguments = getArguments().getInt(ARG_SECTION_NUMBER, -1);
+            String stringArguments = getArguments().getString(NAME_TITLE);
+            if (intArguments == -1) {
+                ((MainActivity) activity).onSectionAttached(stringArguments);
+            }
+            ((MainActivity) activity).onSectionAttached(intArguments);
         }
     }
 

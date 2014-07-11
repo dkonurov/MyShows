@@ -8,7 +8,6 @@ import android.content.Intent;
 import com.myShows.dmitry.myshowsserial.activity.LoginActivity;
 import com.myShows.dmitry.myshowsserial.asyncTask.GetAsyncTask;
 import com.myShows.dmitry.myshowsserial.enums.EnumMethod;
-import com.myShows.dmitry.myshowsserial.listener.ResultLoginListener;
 import com.myShows.dmitry.myshowsserial.listener.ResultObjectListener;
 
 public class ApiManager {
@@ -90,6 +89,12 @@ public class ApiManager {
                         case CURRENT_SHOW:
                             getCurrentShow(Integer.parseInt(paramsBuilder.getMethodByString("id")), resultObjectListener);
                             break;
+                        case EPISODE_UNWATCHED:
+                            getUnwatchedEpisode(resultObjectListener);
+                            break;
+                        case EPISODE_NEXT:
+                            getNextEpisode(resultObjectListener);
+                            break;
                     }
                 }
 
@@ -119,6 +124,30 @@ public class ApiManager {
         ParamsBuilder paramsBuilder = new ParamsBuilder(EnumMethod.CURRENT_SHOW);
         paramsBuilder.addMethod("method",ParamsBuilder.SHOWS_METHOD);
         paramsBuilder.addMethod("id",String.format("%s/", id));
+        getAsyncTask.execute(paramsBuilder);
+    }
+
+    public void getUnwatchedEpisode(ResultObjectListener resultObjectListener) {
+        GetAsyncTask getAsyncTask = new GetAsyncTask(mContext, resultObjectListener) {
+            @Override
+            public void onNeedResult(ParamsBuilder paramsBuilder, ResultObjectListener resultObjectListener) {
+                authorization(paramsBuilder, resultObjectListener);
+            }
+        };
+        ParamsBuilder paramsBuilder = new ParamsBuilder(EnumMethod.EPISODE_UNWATCHED);
+        paramsBuilder.addMethod("method", ParamsBuilder.EPISODE_UNWATCHED);
+        getAsyncTask.execute(paramsBuilder);
+    }
+
+    public void getNextEpisode(ResultObjectListener resultObjectListener) {
+        GetAsyncTask getAsyncTask = new GetAsyncTask(mContext, resultObjectListener) {
+            @Override
+            public void onNeedResult(ParamsBuilder paramsBuilder, ResultObjectListener resultObjectListener) {
+                authorization(paramsBuilder, resultObjectListener);
+            }
+        };
+        ParamsBuilder paramsBuilder = new ParamsBuilder(EnumMethod.EPISODE_NEXT);
+        paramsBuilder.addMethod("method",ParamsBuilder.EPISODE_NEXT);
         getAsyncTask.execute(paramsBuilder);
     }
 

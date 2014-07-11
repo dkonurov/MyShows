@@ -9,10 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public class ParamsBuilder {
+    private static final String DEFAULT_API_STRING = "http://api.myshows.ru/";
     public static final String LOGIN_METHOD = "profile/login";
     public static final String PROFILE_METHOD = "profile/";
     public static final String SHOWS_METHOD = "profile/shows/";
-    private static final String DEFAULT_API_STRING = "http://api.myshows.ru/";
+    public static final String EPISODE_UNWATCHED = "profile/episodes/unwatched/";
+    public static final String EPISODE_NEXT ="profile/episodes/next/";
     private EnumMethod mEnumMethod;
     private Map<String, String> mMapParams = new HashMap<String, String>();
     private List<String> mMethodList = new ArrayList<String>();

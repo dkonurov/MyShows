@@ -1,16 +1,17 @@
-package com.myShows.dmitry.myshowsserial;
+package com.myShows.dmitry.myshowsserial.navigationDrawer;
 
-import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,12 +23,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation drawer.
- * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
- * design guidelines</a> for a complete explanation of the behaviors implemented here.
- */
-public class NavigationDrawerFragment extends Fragment {
+import com.myShows.dmitry.myshowsserial.R;
+import com.myShows.dmitry.myshowsserial.activity.MainActivity;
+
+public class BackNavigationDrawer extends Fragment {
 
     /**
      * Remember the position of the selected item.
@@ -58,7 +57,7 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragment() {
+    public BackNavigationDrawer() {
     }
 
     @Override
@@ -80,7 +79,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated (Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(false);
@@ -88,13 +87,17 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra(MainActivity.ARG_SECTION_NUMBER, position);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getActivity().finish();
+                getActivity().startActivity(intent);
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
@@ -106,7 +109,8 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.my_ser),
                         getString(R.string.rating_ser),
                         getString(R.string.catalog_ser)
-                }));
+                }
+        ));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }

@@ -2,7 +2,6 @@ package com.myShows.dmitry.myshowsserial.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.myShows.dmitry.myshowsserial.R;
+import com.myShows.dmitry.myshowsserial.activity.MainActivity;
 import com.myShows.dmitry.myshowsserial.activity.ShowCurrentActivity;
 import com.myShows.dmitry.myshowsserial.model.Show;
 
@@ -20,13 +20,14 @@ public class ShowAdapter extends ArrayAdapter<Show> {
     private final LayoutInflater mInflater;
     private final int mResource;
     private final List<Show> mShows;
+    private final MainActivity mActivity;
 
-    public ShowAdapter(Context context, int resource, List<Show> shows) {
-        super(context, resource, shows);
+    public ShowAdapter(MainActivity activity, int resource, List<Show> shows) {
+        super(activity, resource, shows);
         mResource = resource;
         mShows = shows;
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        mInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mActivity = activity;
     }
 
     @Override
@@ -40,9 +41,8 @@ public class ShowAdapter extends ArrayAdapter<Show> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ShowCurrentActivity.class);
-                Log.d("fail", mShows.get(position).getShowId() + "");
                 intent.putExtra(ShowCurrentActivity.ID, mShows.get(position).getShowId());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(ShowCurrentActivity.TITLE, mShows.get(position).getTitle());
                 getContext().startActivity(intent);
             }
         });

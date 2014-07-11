@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.myShows.dmitry.myshowsserial.apiUtils.ApiManager;
 import com.myShows.dmitry.myshowsserial.R;
 import com.myShows.dmitry.myshowsserial.apiUtils.Utils;
-import com.myShows.dmitry.myshowsserial.listener.ResultLoginListener;
 import com.myShows.dmitry.myshowsserial.listener.ResultNothingListener;
 
 import java.io.UnsupportedEncodingException;

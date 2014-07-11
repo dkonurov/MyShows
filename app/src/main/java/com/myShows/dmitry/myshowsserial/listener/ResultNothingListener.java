@@ -7,5 +7,8 @@ public abstract class ResultNothingListener implements ResultObjectListener {
         onNothingResult();
     }
 
+    @Override
+    public void onErrorAuthorization() {}
+
     abstract public void onNothingResult();
 }

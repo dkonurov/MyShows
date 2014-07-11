@@ -21,7 +21,8 @@ import java.util.List;
 public class ShowSerialFragment extends Fragment {
 
     private List<Show> mShows;
-    private Context mContext;
+    public static final String SHOW_FRAGMENT ="SHOW_FRAGMENT";
+
 
     public static ShowSerialFragment newInstance(int index) {
         ShowSerialFragment fragment = new ShowSerialFragment();
@@ -43,13 +44,10 @@ public class ShowSerialFragment extends Fragment {
             public void onResultShowList(List<Show> showList) {
                 if (showList != null) {
                     mShows = showList;
-                    ShowAdapter showAdapter = new ShowAdapter(mContext, R.layout.element_list_shows, mShows);
+                    ShowAdapter showAdapter = new ShowAdapter((MainActivity) getActivity(), R.layout.element_list_shows, mShows);
                     listView.setAdapter(showAdapter);
                 }
             }
-
-            @Override
-            public void onErrorAuthorization() {}
         });
         return rootView;
     }
@@ -59,6 +57,5 @@ public class ShowSerialFragment extends Fragment {
         super.onAttach(activity);
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(MainActivity.ARG_SECTION_NUMBER));
-        mContext = activity.getApplicationContext();
     }
 }
