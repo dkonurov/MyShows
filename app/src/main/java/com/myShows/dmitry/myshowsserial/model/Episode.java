@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Episode {
 
     @SerializedName("episodeId")
-    private int mEpisodeId;
+    private Integer mEpisodeId;
 
     @SerializedName("title")
     private String mTitle;
@@ -22,8 +22,53 @@ public class Episode {
     @SerializedName("airDate")
     private String mAirDate;
 
-    public int getEpisodeId() {
-        return mEpisodeId;
+    @SerializedName("id")
+    private Integer mId;
+
+    @SerializedName("watchDate")
+    private String mWatchDate;
+
+    @SerializedName("rating")
+    private int mRating;
+
+    private boolean mIsWatched = false;
+
+    public boolean isWatched() {
+        return mIsWatched;
+    }
+
+    public void setIsWatched(Boolean mIsWatched) {
+        this.mIsWatched = mIsWatched;
+    }
+
+    public Integer getId() {
+      if (mId == null && mEpisodeId == null) {
+          return null;
+      } else if (mId == null) {
+          return mEpisodeId;
+      } else {
+          return mId;
+      }
+    }
+
+    public void setId(int mId) {
+        this.mId = mId;
+    }
+
+    public String getWatchDate() {
+        return mWatchDate;
+    }
+
+    public void setWatchDate(String mWatchDate) {
+        this.mWatchDate = mWatchDate;
+    }
+
+    public int getRating() {
+        return mRating;
+    }
+
+    public void setRating(int mRating) {
+        this.mRating = mRating;
     }
 
     public void setEpisodeId(int mEpisodeId) {

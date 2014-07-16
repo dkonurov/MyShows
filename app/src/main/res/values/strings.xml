@@ -19,10 +19,9 @@
     <string name="ACCOUNT_LABEL">Account Label</string>
     <string name="account_type">com.myShowsSer</string>
     <string name="shows_watch">ShowsWatch</string>
-    <string name="watch_episode">Видел</string>
-    <string name="unwatched_episode">Не смотрел</string>
-    <string name="next_episode">Будут</string>
+    <string name="watch_episode">Серии</string>
     <string name="show_current_activity_label">ShowCurrentActivity</string>
     <string name="check_episode_label">CheckEpisodeActivity</string>
+    <string name="your_show_this_episode">вы посмотрели эту серию</string>
 
 </resources>

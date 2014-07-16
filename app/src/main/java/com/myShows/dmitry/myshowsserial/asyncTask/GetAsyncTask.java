@@ -25,7 +25,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public abstract class GetAsyncTask extends AsyncTask<ParamsBuilder, Void, Object> {
+public class GetAsyncTask extends AsyncTask<ParamsBuilder, Void, Object> {
 
     public static final int PARAMS_DEFAULT_POSITION = 0;
     private static HttpClient sHttpClient;
@@ -63,12 +63,16 @@ public abstract class GetAsyncTask extends AsyncTask<ParamsBuilder, Void, Object
             bufferedReader = new BufferedReader(inputStreamReader);
             String json = bufferedReader.readLine();
             ResultAsyncTask resultAsyncTask = new ResultAsyncTask();
-            resultAsyncTask.setJson(json);
+            if (json != null) {
+                resultAsyncTask.setJson(json);
+            } else {
+                resultAsyncTask.setJson("nothing");
+            }
             resultAsyncTask.setStatusCode(response.getStatusLine().getStatusCode());
             Log.d("json", resultAsyncTask.getJson());
             switch (resultAsyncTask.getStatusCode()) {
                 case ApiManager.NEED_AUTHORIZATION:
-                    onNeedResult(params[0], mResultObjectListener);
+                    ApiManager.getInstance().authorization(params[0], mResultObjectListener);
                     break;
                 case ApiManager.ERROR_AUTHORIZATION:
                     return null;
@@ -91,6 +95,4 @@ public abstract class GetAsyncTask extends AsyncTask<ParamsBuilder, Void, Object
     protected void onPostExecute(Object object) {
         mResultObjectListener.onResult(object);
     }
-
-    abstract public void onNeedResult(ParamsBuilder paramsBuilder, ResultObjectListener resultObjectListener);
 }

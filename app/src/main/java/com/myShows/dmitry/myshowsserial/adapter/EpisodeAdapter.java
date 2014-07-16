@@ -1,20 +1,20 @@
 package com.myShows.dmitry.myshowsserial.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.myShows.dmitry.myshowsserial.R;
-import com.myShows.dmitry.myshowsserial.activity.CheckEpisodeActivity;
-import com.myShows.dmitry.myshowsserial.activity.ShowCurrentActivity;
+import com.myShows.dmitry.myshowsserial.apiUtils.ApiManager;
+import com.myShows.dmitry.myshowsserial.enums.EnumMethod;
+import com.myShows.dmitry.myshowsserial.listener.ResultNothingListener;
 import com.myShows.dmitry.myshowsserial.model.Episode;
 
-import java.util.InputMismatchException;
 import java.util.List;
 
 public class EpisodeAdapter extends ArrayAdapter {
@@ -42,21 +42,36 @@ public class EpisodeAdapter extends ArrayAdapter {
         }
         LinearLayout convertLayout = (LinearLayout) convertView;
         TextView textView = (TextView) convertView.findViewById(R.id.series_label_list);
-        textView.setText(String.format("%s %s", mSeries.get(position).getEpisodeId(), mSeries.get(position).getTitle()));
-        convertLayout.setOnClickListener(new View.OnClickListener() {
+        textView.setText(String.format("%s %s", mSeries.get(position).getId(), mSeries.get(position).getTitle()));
+        CheckBox checkBox = (CheckBox) convertLayout.findViewById(R.id.episode_check_box_list);
+        checkBox.setChecked(mSeries.get(position).isWatched());
+        initOnClickListener(position, convertLayout, checkBox);
+        return convertLayout;
+    }
+
+    private void initOnClickListener(final int position, final LinearLayout convertLayout, final CheckBox checkBox) {
+        View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CheckEpisodeActivity.class);
-                intent.putExtra(ShowCurrentActivity.TITLE, mSeries.get(position).getTitle());
-                intent.putExtra(EPISODE_ID, mSeries.get(position).getEpisodeId());
-                intent.putExtra(SHOW_ID, mSeries.get(position).getShowId());
-                intent.putExtra(SEASON_NUMBER, mSeries.get(position).getSeasonNumber());
-                intent.putExtra(EPISODE_NUMBER, mSeries.get(position).getEpisodeNumber());
-                intent.putExtra(AIR_DATE, mSeries.get(position).getAirDate());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
+
+                if (mSeries.get(position).isWatched()) {
+                    ApiManager.getInstance().setUnCheckEpisode(mSeries.get(position).getId(), new ResultNothingListener() {
+                        @Override
+                        public void onNothingResult() {
+                            mSeries.get(position).setIsWatched(false);
+                            checkBox.setChecked(mSeries.get(position).isWatched());
+                        }
+                    });
+                } else {
+                    ApiManager.getInstance().setCheckEpisode(mSeries.get(position).getId(), new ResultNothingListener() {
+                        @Override
+                        public void onNothingResult() {
+                            mSeries.get(position).setIsWatched(true);
+                            checkBox.setChecked(mSeries.get(position).isWatched());
+                        }
+                    });
+                }
             }
-        });
-        return convertLayout;
+        };
     }
 }
